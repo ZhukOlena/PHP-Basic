@@ -1,30 +1,52 @@
 <?php
 
-$firstPath = [
-    'one' => [
-        'two' => 44,
-        'three' => 55,
+
+$arr = [
+    1,
+    2,
+    [
+        3,
+        4,
+        5,
+        [
+            1,
+            2,
+        ],
     ],
-    'two' => 2,
-    'four' => [
-        'olena' => 32,
-        'Vitalii' => 42,
-        'Vasya' => 20,
-    ],
-    'five' => 5,
+    3,
 ];
 
+function arrayParse(array $arr, int $exteriorKey): array
+{
+    $result = [];
+    foreach ($arr as $key => $value) {
+        if (is_array($value)) {
+            $result = array_merge($result, arrayParse($value, $exteriorKey));
+        } else {
+            if ($key === $exteriorKey) {
+                $result[] = $value;
+            }
+        }
+    }
+    return $result;
+}
+
+var_dump(arrayParse($arr, 1) );
 
 
 
 //Создать функцию которая считает все буквы b в переданной строке,
 // в случае если передается не строка функция должна возвращать false
-$strString = 'bob is the better boy bbb';
+$strString = 'better boy bbb';
 $g = 'b';
 
-function task2($String, $letter): int
+function task2($StringS, $letter): int
 {
-    return substr_count($String, $letter);
+    if (is_string($StringS)){
+        return substr_count($StringS, $letter);
+    } else {
+        return false;
+    }
 }
 
 print task2($strString, $g). '<br>';
@@ -67,8 +89,8 @@ print get_sum($lemon).'<br>';
 
 //Создать функцию которая определит сколько квадратов меньшего размера можно вписать
 //в квадрат большего размера размер возвращать в float
-$squareBig = 25;
-$squareSmall = 4;
+$squareBig = 87;
+$squareSmall = 13;
 
 function get_result($squareBig, $squareSmall): float
 {
