@@ -16,11 +16,11 @@
         Виберіть свій варіант
     </p>
     <h3>Варіант 1</h3>
-    <input type="checkbox"  value="a">
+    <input type="checkbox" name="txt[]" value="a">
     <h3>Варіант 2</h3>
-    <input type="checkbox" value="b">
+    <input type="checkbox" name="txt[]" value="b">
     <h3>Варіант 3</h3>
-    <input type="checkbox" value="c">
+    <input type="checkbox" name="txt[]" value="c">
     <input type="submit">
 
 </form>
@@ -28,6 +28,9 @@
 </html>
 
 <?php
+
+print_r($_POST);
+exit();
 
 if (isset($_POST['name'])) {
     $ooo = $_POST['name'];
