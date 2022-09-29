@@ -1,0 +1,13 @@
+{
+    "name": "learn-php/learn-php",
+
+    "required": {
+        "php": "*"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "App\\": "src"
+        }
+    }
+}
