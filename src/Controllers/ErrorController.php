@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class ErrorController
+class ErrorController Implements ControllerInterface
 {
     public function handleAction()
     {

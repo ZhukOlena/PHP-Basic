@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class AdminController
+class AdminController implements ControllerInterface
 {
     public function handleAction()
     {
