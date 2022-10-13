@@ -18,6 +18,28 @@ services:
         volumes:
             - './../:/code'
 
+    mysql:
+        image: mysql:8.0
+        container_name: learn-php-mysql
+        ports:
+            - '3306:3306'
+        volumes:
+            - '~/.databases/learn-php:/var/lib/mysql:rw'
+        environment:
+            MYSQL_DATABASE: learn_php
+            MYSQL_USER: learn_php
+            MYSQL_PASSWORD: Q1w2e3r4
+            MYSQL_RANDOM_ROOT_PASSWORD: yes
+
+    phpmyadmin:
+        image: phpmyadmin:5-apache
+        ports:
+            - '8081:80'
+        environment:
+            PMA_HOST: learn-php-mysql
+            PMA_USER: learn_php
+            PMA_PASSWORD: Q1w2e3r4
+
 networks:
     learn-php:
         driver: bridge

@@ -2,7 +2,9 @@
     "name": "learn-php/learn-php",
 
     "required": {
-        "php": "*"
+        "php": "*",
+        "ext-pdo": "*",
+        "ext-pdo_mysql": "*"
     },
 
     "autoload": {
