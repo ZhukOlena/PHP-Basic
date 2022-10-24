@@ -2,7 +2,7 @@
     "name": "learn-php/learn-php",
 
     "required": {
-        "php": "*",
+        "php": "~7.4",
         "ext-pdo": "*",
         "ext-pdo_mysql": "*"
     },

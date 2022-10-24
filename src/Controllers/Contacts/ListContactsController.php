@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Contacts;
 
+use App\Controllers\ControllerInterface;
 use App\Core\Orm\Connector;
 use App\Core\ViewRenderer;
 
-class ListMessagesController implements ControllerInterface
+class ListContactsController implements ControllerInterface
 {
     private ViewRenderer $viewRenderer;
     private Connector $connector;
@@ -20,23 +21,25 @@ class ListMessagesController implements ControllerInterface
     {
         $pdo = $this->connector->getPdo();
 
-        $stmt = $pdo->query('SELECT * FROM messages ORDER BY created_at DESC');
+        $stmt = $pdo->query('SELECT * FROM contacts ORDER BY created_at DESC');
 
-        $messages = [];
+        $contacts = [];
 
         while ($row = $stmt->fetch()) {
-            $messages[] = [
+            $contacts[] = [
                 'id' => $row['id'],
                 'created_at' => new \DateTime($row['created_at']),
-                'from' => $row['from_name'],
-                'message' => $row['message'],
+                'phone' => $row['phone'],
+                'address' => $row['address'],
+                'email' => $row ['email'],
             ];
         }
 
-        $content = $this->viewRenderer->render('list-messages', [
-            'messages' => $messages
+        $content = $this->viewRenderer->render('list-contacts', [
+            'contacts' => $contacts
         ]);
 
         print $content;
     }
+
 }
